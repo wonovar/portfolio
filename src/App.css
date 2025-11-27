@@ -1,3 +1,6 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+}
 #root {
   width: 100%;
   margin: 0 auto;
