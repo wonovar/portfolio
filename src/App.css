@@ -669,7 +669,7 @@ html {
 }
 
 .modal-content.resume-modal {
-  width: min(1040px, 98%);
+  width: min(1200px, 98%);
   max-height: 90vh;
   padding-left: 1.4rem;
   padding-right: 1.4rem;
