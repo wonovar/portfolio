@@ -446,6 +446,7 @@ html {
 /* Resume image styling */
 .resume-image {
   max-width: 100%;
+  max-height: 70vh;
   height: auto;
   display: block;
 }
