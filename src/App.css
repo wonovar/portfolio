@@ -12,7 +12,6 @@ html {
   text-align: center;
 }
 
-/* Project detail modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -137,15 +136,14 @@ html {
   scroll-margin-top: 80px;
 }
 
-/* ABOUT SECTION STYLES */
 .about-section {
   display: flex;
   align-items: center;
-  justify-content: center; /* 중앙으로 모음 */
+  justify-content: center;
   gap: 4rem;
   padding: 4rem 2rem;
   max-width: 1400px;
-  margin: 0 auto; /* 화면이 넓어져도 가운데 유지 */
+  margin: 0 auto;
   text-align: left; 
 }
 
@@ -186,7 +184,6 @@ html {
   color: #333;
 }
 
-/* SKILLS SECTION (TAG STYLE) */
 .section-title {
   font-size: 2.75rem;
   font-weight: 600;
@@ -206,19 +203,15 @@ html {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr; /* 세 개 카테고리를 아래로 일렬 배치 */
+  grid-template-columns: 1fr;
   gap: 5.5rem;
   justify-items: center;
 }
 
-/* Responsive grid for Skills & Projects */
-
-/* 각 카테고리 묶음 */
 .skill-column {
   text-align: center;
 }
 
-/* 🔥 Main / 🚀 Experienced / 📚 Studying */
 .skill-card-header {
   display: flex; justify-content: center;
   gap: 0.75rem;
@@ -242,7 +235,6 @@ html {
   font-size: 1.25rem;
 }
 
-/* 태그 컨테이너 */
 .skill-list {
   display: flex;
   flex-wrap: wrap;
@@ -253,7 +245,6 @@ html {
   list-style: none;
 }
 
-/* 태그(Chip) 스타일 */
 .skill-list li {
   background: #f4f4f5;
   border-radius: 999px;
@@ -263,11 +254,9 @@ html {
   font-weight: 500;
 }
 
-/* PROJECTS SECTION */
 .projects-section {
   display: block;
 }
-
 
 .projects-inner {
   width: 100%;
@@ -284,7 +273,6 @@ html {
 
 .projects-grid {
   display: grid;
-  /* 카드 하나 최소 280px, 그 이상은 자동으로 넓어지도록 설정 */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
@@ -326,7 +314,6 @@ html {
   margin-top: auto;
 }
 
-/* CONTACT SECTION */
 .contact-section {
   display: flex;
   justify-content: center;
@@ -375,7 +362,6 @@ html {
   text-decoration: underline;
 }
 
-
 .contact-buttons {
   display: flex;
   justify-content: center;
@@ -406,7 +392,6 @@ html {
   transform: translateY(-1px);
 }
 
-/* Resume modal download button */
 .resume-download-btn {
   padding: 6px 14px;
   border-radius: 999px;
@@ -426,14 +411,12 @@ html {
   border-color: #c0c0c0;
 }
 
-/* Resume modal layout */
 .resume-modal-inner {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-/* Ensure the image area can take up available vertical space */
 .resume-image-wrapper {
   flex: 1;
   display: flex;
@@ -443,7 +426,6 @@ html {
   overflow: auto;
 }
 
-/* Resume image styling */
 .resume-image {
   width: 100%;
   height: auto;
@@ -452,7 +434,6 @@ html {
   object-fit: contain;
 }
 
-/* Footer for resume modal: place download button at bottom-right */
 .resume-modal-footer {
   margin-top: 1rem;
   width: 100%;
@@ -490,7 +471,6 @@ html {
   border-color: #111;
 }
 
-/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0;
@@ -532,7 +512,6 @@ html {
   text-decoration: underline;
 }
 
-
 .navbar a.active {
   text-decoration: underline;
 }
@@ -559,7 +538,6 @@ html {
   transform: translateY(-1px);
 }
 
-/* ABOUT SECTION RESPONSIVE */
 @media (max-width: 900px) {
   .about-section {
     padding: 3rem 2rem;
@@ -605,11 +583,6 @@ html {
   }
 }
 
-
-/* ============================= */
-/*        PROJECT MODAL SLIDER   */
-/* ============================= */
-
 .modal-slider {
   margin-top: 1.8rem;
   width: 100%;
@@ -619,7 +592,6 @@ html {
   align-items: center;
 }
 
-/* Slide 카드 */
 .modal-slide {
   width: 100%;
   background: #ffffff;
@@ -637,7 +609,6 @@ html {
   overflow-y: auto;
 }
 
-/* 좌우 화살표 */
 .slide-controls {
   display: flex;
   align-items: center;
@@ -659,7 +630,6 @@ html {
   background: #e4e4e4;
 }
 
-/* 도트 */
 .slide-dots {
   display: flex;
   gap: 0.45rem;
@@ -706,11 +676,119 @@ html {
   padding-right: 1rem;
 }
 
-/* ============================= */
-/*           PRINT STYLES        */
-/* ============================= */
+.booklog-detail-wrapper {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.detail-toggle-btn {
+  border: none;
+  background: transparent;
+  color: #555;
+  font-size: 0.95rem;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.detail-toggle-btn:hover {
+  color: #111;
+}
+
+.booklog-detail {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.booklog-main-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.detail-item {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.detail-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  object-fit: cover;
+}
+
+.detail-caption {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.booklog-review {
+  border-top: 1px dashed #ddd;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.detail-subtitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.detail-before-after {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.detail-img-small {
+  width: calc(50% - 0.5rem);
+  max-width: 190px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  object-fit: cover;
+}
+
+.detail-arrow {
+  font-size: 1.3rem;
+  color: #999;
+}
+
+.detail-reflection-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+@media (max-width: 600px) {
+  .booklog-main-features {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-before-after {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-img-small {
+    width: 100%;
+    max-width: none;
+  }
+}
+
 @media print {
-  /* A4 세로 기준으로 본문 폭 고정 */
   html,
   body {
     margin: 0;
@@ -725,7 +803,6 @@ html {
     width: 100%;
   }
 
-  /* 네비게이션, 모달 오버레이, 버튼류 숨기기 */
   .navbar,
   .modal-overlay,
   .download-btn,
@@ -734,37 +811,28 @@ html {
     display: none !important;
   }
 
-  /* 각 섹션을 한 페이지 흐름 안에 세로 배치 */
   .section {
     border-bottom: none;
-    /* 전체적으로 여백을 조금 더 줄여서 불필요한 마지막 빈 페이지가 생기지 않도록 조정 */
     padding: 16mm 16mm 10mm;
     text-align: left;
-    /* 섹션 중간에서 쪼개지지 않도록 힌트 */
     page-break-inside: avoid;
   }
 
-  /* About만 다음 섹션을 새 페이지에서 시작 */
   #about.section {
     page-break-after: always;
   }
 
-  /* Skills, Projects, Contact는 강제 페이지 나누기 없음
-     → 브라우저가 자연스럽게 이어서 배치하게 둔다 */
   #skills.section,
   #projects.section,
   #contact.section {
     page-break-after: auto;
   }
 
-  /* 마지막 Contact 섹션은 아래 여백을 더 줄여서
-     전체 높이가 A4 페이지를 넘지 않도록 조절 */
   #contact.section {
     padding-bottom: 4mm;
     margin-bottom: 0;
   }
 
-  /* 가로 레이아웃을 인쇄용 세로 레이아웃으로 조정 */
   .about-section,
   .skills-inner,
   .projects-inner,

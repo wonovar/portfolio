@@ -2,6 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import resumeImage from "../assets/resume.png";
 import coverImage1 from "../assets/cover1.png";
 import coverImage2 from "../assets/cover2.png";
+import booklog1 from "../assets/booklog1.png";
+import booklog2 from "../assets/booklog2.png";
+import booklog3 from "../assets/booklog3.png";
+import booklogBefore from "../assets/booklogbefore.png";
+import booklogAfter from "../assets/booklogafter.png";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about");
@@ -11,6 +16,7 @@ export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isCoverOpen, setIsCoverOpen] = useState(false);
   const [coverPage, setCoverPage] = useState(0);
+  const [isBookLogDetailOpen, setIsBookLogDetailOpen] = useState(false);
 
   const autoplayRef = useRef(null);
 
@@ -43,6 +49,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    setIsBookLogDetailOpen(false);
     setCurrentSlide(0);
 
     if (autoplayRef.current) {
@@ -66,7 +73,7 @@ export default function Home() {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const y = el.offsetTop - 80; // navbar 높이 보정
+    const y = el.offsetTop - 80; // 네비게이션 바 높이 보정
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
@@ -656,7 +663,83 @@ export default function Home() {
                       {selectedProject.slides[currentSlide].body}
                     </p>
                   )}
-                  {/* 이미지는 추후 추가 예정 */}
+
+                  {selectedProject.title === "Book-Log (독서 기록 앱)" &&
+                    selectedProject.slides[currentSlide].title === "주요 기능" && (
+                      <div className="booklog-detail-wrapper">
+                        <button
+                          type="button"
+                          className="detail-toggle-btn"
+                          onClick={() =>
+                            setIsBookLogDetailOpen((prev) => !prev)
+                          }
+                        >
+                          {isBookLogDetailOpen ? "접기" : "자세히 보기"}
+                        </button>
+
+                        {isBookLogDetailOpen && (
+                          <div className="booklog-detail">
+                            <div className="booklog-main-features">
+                              <div className="detail-item">
+                                <img
+                                  src={booklog1}
+                                  alt="Book-Log 서재 화면"
+                                  className="detail-img"
+                                />
+                                <p className="detail-caption">
+                                  서재 화면에서 등록한 책을 표지와 제목으로 한눈에
+                                  볼 수 있고, 검색·정렬·삭제 기능을 지원합니다.
+                                </p>
+                              </div>
+                              <div className="detail-item">
+                                <img
+                                  src={booklog2}
+                                  alt="Book-Log 독서 캘린더"
+                                  className="detail-img"
+                                />
+                                <p className="detail-caption">
+                                  독서 캘린더에서는 날짜별 독서 기록을 달력 형태로
+                                  확인할 수 있습니다.
+                                </p>
+                              </div>
+                              <div className="detail-item">
+                                <img
+                                  src={booklog3}
+                                  alt="Book-Log 책탑 화면"
+                                  className="detail-img"
+                                />
+                                <p className="detail-caption">
+                                  책탑 기능은 기간별 독서량을 책 높이로 시각화해
+                                  성취감을 느낄 수 있도록 구성했습니다.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="booklog-review">
+                              <h5 className="detail-subtitle">
+                                기능 구성 및 시각화 방식 개선 과정
+                              </h5>
+                              <div className="detail-before-after">
+                                <img
+                                  src={booklogBefore}
+                                  alt="책탑 초기 버전"
+                                  className="detail-img-small"
+                                />
+                                <span className="detail-arrow">→</span>
+                                <img
+                                  src={booklogAfter}
+                                  alt="책탑 최종 버전"
+                                  className="detail-img-small"
+                                />
+                              </div>
+                              <p className="detail-reflection-text">
+                                초기 버전에서는 책 높이와 비교 사물 배치가 직관적이지 않아 한눈에 읽기 어려웠습니다. 이후 책과 비교 사물의 비율, 정렬 방식, 색 대비를 여러 번 조정하면서 현재와 같이 기간별 독서량 변화를 한눈에 파악할 수 있는 형태로 시각화를 개선했습니다.
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                 </div>
                 <div className="slide-controls">
                   <button
