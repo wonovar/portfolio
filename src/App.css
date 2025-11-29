@@ -445,10 +445,11 @@ html {
 
 /* Resume image styling */
 .resume-image {
-  max-width: 100%;
-  max-height: 70vh;
+  width: 100%;
   height: auto;
+  max-height: calc(100vh - 220px);
   display: block;
+  object-fit: contain;
 }
 
 /* Footer for resume modal: place download button at bottom-right */
