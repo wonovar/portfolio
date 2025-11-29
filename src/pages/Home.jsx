@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from "react";
+import resumeImage from "../assets/resume.png";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about");
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   const autoplayRef = useRef(null);
 
@@ -66,6 +68,15 @@ export default function Home() {
 
   const handleCloseModal = () => {
     setSelectedProject(null);
+  };
+
+  const handleResumeDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/resume.pdf";
+    link.download = "정예원_이력서.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -364,9 +375,9 @@ export default function Home() {
                 })
               }
             >
-              <h3>화장실 위치 공유 앱</h3>
-              <p>사용자가 근처 화장실 위치를 등록하고 조회할 수 있는 웹 프로젝트입니다.</p>
-              <span className="project-tag">React · Firebase</span>
+            <h3>화장실 위치 공유 앱</h3>
+            <p>사용자가 근처 화장실 위치를 등록하고 조회할 수 있는 Android 앱 프로젝트입니다.</p>
+            <span className="project-tag">Android · Firebase</span>
             </div>
 
             <div
@@ -437,15 +448,59 @@ export default function Home() {
             </div>
           </div>
           <div className="contact-buttons">
-            <a href="/assets/resume.pdf" className="download-btn" download>
-              <span className="download-label">이력서 다운로드</span>
-            </a>
+            <button
+              type="button"
+              className="download-btn"
+              onClick={() => setIsResumeOpen(true)}
+            >
+              <span className="download-label">이력서 보기</span>
+            </button>
             <a href="/assets/coverletter.pdf" className="download-btn" download>
               <span className="download-label">자기소개서 다운로드</span>
             </a>
           </div>
         </div>
       </section>
+
+      {isResumeOpen && (
+        <div
+          className="modal-overlay"
+          onClick={() => setIsResumeOpen(false)}
+        >
+          <div
+            className="modal-content resume-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="resume-modal-inner">
+              <div className="resume-modal-header">
+                <button
+                  type="button"
+                  className="modal-close"
+                  onClick={() => setIsResumeOpen(false)}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="resume-image-wrapper">
+                <img
+                  src={resumeImage}
+                  alt="이력서"
+                  className="resume-image"
+                />
+              </div>
+              <div className="resume-modal-footer">
+                <button
+                  type="button"
+                  className="resume-download-btn"
+                  onClick={handleResumeDownload}
+                >
+                  ⬇ 이력서 PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {selectedProject && (
         <div className="modal-overlay" onClick={handleCloseModal}>

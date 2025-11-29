@@ -24,11 +24,15 @@ html {
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   width: min(760px, 90%);
   background: #ffffff;
   border-radius: 16px;
   padding: 2.4rem 2.6rem 2.6rem;
+  margin-top: 2.5rem;
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
   text-align: left;
 }
@@ -240,6 +244,7 @@ html {
 .skill-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.45rem;
   padding: 0;
   margin: 0.2rem 0 0;
@@ -397,6 +402,48 @@ html {
   color: #333;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transform: translateY(-1px);
+}
+
+/* Resume modal download button */
+.resume-download-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #d0d0d0;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resume-download-btn:hover {
+  background: #f3f3f3;
+  border-color: #c0c0c0;
+}
+
+/* Resume modal layout */
+.resume-modal-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Ensure the image area can take up available vertical space */
+.resume-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer for resume modal: place download button at bottom-right */
+.resume-modal-footer {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .download-icon {
