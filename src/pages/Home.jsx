@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import resumeImage from "../assets/resume.png";
+import coverImage1 from "../assets/cover1.png";
+import coverImage2 from "../assets/cover2.png";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about");
@@ -7,6 +9,8 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isCoverOpen, setIsCoverOpen] = useState(false);
+  const [coverPage, setCoverPage] = useState(0);
 
   const autoplayRef = useRef(null);
 
@@ -74,6 +78,15 @@ export default function Home() {
     const link = document.createElement("a");
     link.href = "/assets/resume.pdf";
     link.download = "정예원_이력서.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleCoverDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/coverletter.pdf";
+    link.download = "정예원_자기소개서.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -455,9 +468,16 @@ export default function Home() {
             >
               <span className="download-label">이력서 보기</span>
             </button>
-            <a href="/assets/coverletter.pdf" className="download-btn" download>
-              <span className="download-label">자기소개서 다운로드</span>
-            </a>
+            <button
+              type="button"
+              className="download-btn"
+              onClick={() => {
+                setCoverPage(0);
+                setIsCoverOpen(true);
+              }}
+            >
+              <span className="download-label">자기소개서 보기</span>
+            </button>
           </div>
         </div>
       </section>
@@ -495,6 +515,58 @@ export default function Home() {
                   onClick={handleResumeDownload}
                 >
                   ⬇ 이력서 PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isCoverOpen && (
+        <div
+          className="modal-overlay"
+          onClick={() => setIsCoverOpen(false)}
+        >
+          <div
+            className="modal-content resume-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="resume-modal-inner">
+              <div className="resume-modal-header">
+                <button
+                  type="button"
+                  className="modal-close"
+                  onClick={() => setIsCoverOpen(false)}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="resume-image-wrapper">
+                <img
+                  src={coverPage === 0 ? coverImage1 : coverImage2}
+                  alt="자기소개서"
+                  className="resume-image"
+                />
+              </div>
+              <div className="slide-dots">
+                <button
+                  type="button"
+                  className={`slide-dot ${coverPage === 0 ? "active" : ""}`}
+                  onClick={() => setCoverPage(0)}
+                />
+                <button
+                  type="button"
+                  className={`slide-dot ${coverPage === 1 ? "active" : ""}`}
+                  onClick={() => setCoverPage(1)}
+                />
+              </div>
+              <div className="resume-modal-footer">
+                <button
+                  type="button"
+                  className="resume-download-btn"
+                  onClick={handleCoverDownload}
+                >
+                  ⬇ 자기소개서 PDF
                 </button>
               </div>
             </div>
