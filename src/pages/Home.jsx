@@ -92,6 +92,12 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
+  const handlePrintPortfolio = () => {
+    setIsResumeOpen(false);
+    setIsCoverOpen(false);
+    window.print();
+  };
+
   return (
     <div>
       {/* 상단 네비게이션 */}
@@ -147,6 +153,14 @@ export default function Home() {
               Contact
             </a>
           </nav>
+
+          <button
+            type="button"
+            className="nav-print-btn"
+            onClick={handlePrintPortfolio}
+          >
+            Print
+          </button>
         </div>
       </header>
 
@@ -156,7 +170,7 @@ export default function Home() {
           <h1>정예원</h1>
           <h2>Front-End Developer</h2>
           <p>
-            사용자 경험을 고려한 웹 인터페이스를 만드는 개발 지망생입니다.
+            사용자 경험을 고려한 웹 인터페이스를 만드는 개발자입니다.
             <br />
             HTML/CSS/JavaScript를 기반으로 React 등 프론트엔드 기술을 공부하고
             있습니다.

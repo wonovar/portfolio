@@ -506,6 +506,15 @@ html {
   z-index: 100;
 }
 
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
 .navbar nav {
   display: flex;
   gap: 2rem;
@@ -526,6 +535,28 @@ html {
 
 .navbar a.active {
   text-decoration: underline;
+}
+
+.nav-print-btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  color: #333;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-print-btn:hover {
+  background: #f3f3f3;
+  border-color: #ccc;
+  transform: translateY(-1px);
 }
 
 /* ABOUT SECTION RESPONSIVE */
@@ -673,4 +704,110 @@ html {
   max-height: 90vh;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* ============================= */
+/*           PRINT STYLES        */
+/* ============================= */
+@media print {
+  /* A4 세로 기준으로 본문 폭 고정 */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 210mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #root {
+    padding: 0;
+    width: 100%;
+  }
+
+  /* 네비게이션, 모달 오버레이, 버튼류 숨기기 */
+  .navbar,
+  .modal-overlay,
+  .download-btn,
+  .resume-download-btn,
+  .nav-print-btn {
+    display: none !important;
+  }
+
+  /* 각 섹션을 한 페이지 흐름 안에 세로 배치 */
+  .section {
+    border-bottom: none;
+    /* 전체적으로 여백을 조금 더 줄여서 불필요한 마지막 빈 페이지가 생기지 않도록 조정 */
+    padding: 16mm 16mm 10mm;
+    text-align: left;
+    /* 섹션 중간에서 쪼개지지 않도록 힌트 */
+    page-break-inside: avoid;
+  }
+
+  /* About만 다음 섹션을 새 페이지에서 시작 */
+  #about.section {
+    page-break-after: always;
+  }
+
+  /* Skills, Projects, Contact는 강제 페이지 나누기 없음
+     → 브라우저가 자연스럽게 이어서 배치하게 둔다 */
+  #skills.section,
+  #projects.section,
+  #contact.section {
+    page-break-after: auto;
+  }
+
+  /* 마지막 Contact 섹션은 아래 여백을 더 줄여서
+     전체 높이가 A4 페이지를 넘지 않도록 조절 */
+  #contact.section {
+    padding-bottom: 4mm;
+    margin-bottom: 0;
+  }
+
+  /* 가로 레이아웃을 인쇄용 세로 레이아웃으로 조정 */
+  .about-section,
+  .skills-inner,
+  .projects-inner,
+  .contact-inner {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .about-section {
+    flex-direction: row;
+    gap: 20mm;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10mm;
+    justify-items: flex-start;
+  }
+
+  .skill-column {
+    text-align: left;
+  }
+
+  .skill-list {
+    justify-content: flex-start;
+  }
+
+  .projects-grid {
+    display: block;
+  }
+
+  .project-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+    margin-bottom: 10mm;
+  }
+
+  .contact-section,
+  .contact-inner,
+  .contact-info {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
